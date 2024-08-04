@@ -1,0 +1,11 @@
+# CLion project files
+.idea/
+*.iml
+
+# Ignore bin directory
+bin/
+build/
+out/
+
+# Ignore cmake-build-debug directory
+cmake-build-debug/
