@@ -2,7 +2,7 @@
 
 ### Programming Language
 
-This project is written in C++, and uses some modern features of C++11. The language and features were chosen to be broadly understood by the largest collection of programmers. It is not meant to represent ideal (or optimized) C++ code.
+This project is written in C++, with multi-threading support provided by the C++11 standard library to speed up rendering.
 
 ## Building and Running
 

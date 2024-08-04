@@ -6,74 +6,45 @@
 
 cmake_minimum_required ( VERSION 3.1.0...3.27.0 )
 
-project ( RTWeekend LANGUAGES CXX )
+project ( PathTracing LANGUAGES CXX )
 
 # Set to C++11
-set ( CMAKE_CXX_STANDARD          11 )
+set ( CMAKE_CXX_STANDARD          17 )
 set ( CMAKE_CXX_STANDARD_REQUIRED ON )
 set ( CMAKE_CXX_EXTENSIONS        OFF )
 
 # Source
 
 set ( EXTERNAL
-  src/external/stb_image.h
+        src/external/stb_image.h
 )
 
-set ( SOURCE_ONE_WEEKEND
-  src/InOneWeekend/main.cc
-  src/InOneWeekend/camera.h
-  src/InOneWeekend/color.h
-  src/InOneWeekend/hittable.h
-  src/InOneWeekend/hittable_list.h
-  src/InOneWeekend/interval.h
-  src/InOneWeekend/material.h
-  src/InOneWeekend/ray.h
-  src/InOneWeekend/rtweekend.h
-  src/InOneWeekend/sphere.h
-  src/InOneWeekend/vec3.h
-)
-
-set ( SOURCE_NEXT_WEEK
-  src/TheNextWeek/main.cc
-  src/TheNextWeek/aabb.h
-  src/TheNextWeek/bvh.h
-  src/TheNextWeek/camera.h
-  src/TheNextWeek/color.h
-  src/TheNextWeek/constant_medium.h
-  src/TheNextWeek/hittable.h
-  src/TheNextWeek/hittable_list.h
-  src/TheNextWeek/interval.h
-  src/TheNextWeek/material.h
-  src/TheNextWeek/perlin.h
-  src/TheNextWeek/quad.h
-  src/TheNextWeek/ray.h
-  src/TheNextWeek/rtw_stb_image.h
-  src/TheNextWeek/rtweekend.h
-  src/TheNextWeek/sphere.h
-  src/TheNextWeek/texture.h
-  src/TheNextWeek/vec3.h
-)
-
-set ( SOURCE_REST_OF_YOUR_LIFE
-        src/TheRestOfYourLife/main.cpp
-  src/TheRestOfYourLife/aabb.h
-  src/TheRestOfYourLife/camera.h
-  src/TheRestOfYourLife/color.h
-  src/TheRestOfYourLife/constant_medium.h
-  src/TheRestOfYourLife/hittable.h
-  src/TheRestOfYourLife/hittable_list.h
-  src/TheRestOfYourLife/interval.h
-  src/TheRestOfYourLife/material.h
-  src/TheRestOfYourLife/onb.h
-  src/TheRestOfYourLife/pdf.h
-  src/TheRestOfYourLife/perlin.h
-  src/TheRestOfYourLife/quad.h
-  src/TheRestOfYourLife/ray.h
-  src/TheRestOfYourLife/rtw_stb_image.h
-  src/TheRestOfYourLife/rtweekend.h
-  src/TheRestOfYourLife/sphere.h
-  src/TheRestOfYourLife/texture.h
-  src/TheRestOfYourLife/vec3.h
+set ( SOURCE_PATH_TRACER
+        src/PathTracer/main.cpp
+        src/PathTracer/AABB.h
+        src/PathTracer/Camera.h
+        src/PathTracer/color.h
+        src/PathTracer/ConstantMedium.h
+        src/PathTracer/Hittable.h
+        src/PathTracer/HittableList.h
+        src/PathTracer/Interval.h
+        src/PathTracer/Material.h
+        src/PathTracer/ONB.h
+        src/PathTracer/PDF.h
+        src/PathTracer/Perlin.h
+        src/PathTracer/Quad.h
+        src/PathTracer/Ray.h
+        src/PathTracer/rtw_stb_image.h
+        src/PathTracer/utils.h
+        src/PathTracer/Sphere.h
+        src/PathTracer/Texture.h
+        src/PathTracer/Vec3.h
+        src/PathTracer/Renderer.h
+        src/PathTracer/Renderer.cpp
+        src/PathTracer/rtw_stb_image.cpp
+        src/PathTracer/Vertex.h
+        src/PathTracer/Vertex.cpp
+        src/PathTracer/BVH.h
 )
 
 include_directories(src)
@@ -106,13 +77,11 @@ elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 # Executables
-add_executable(inOneWeekend      ${EXTERNAL} ${SOURCE_ONE_WEEKEND})
-add_executable(theNextWeek       ${EXTERNAL} ${SOURCE_NEXT_WEEK})
-add_executable(theRestOfYourLife ${EXTERNAL} ${SOURCE_REST_OF_YOUR_LIFE})
-add_executable(cos_cubed src/TheRestOfYourLife/cos_cubed.cpp)
-add_executable(cos_density src/TheRestOfYourLife/cos_density.cpp)
-add_executable(integrate_x_sq src/TheRestOfYourLife/integrate_x_sq.cpp)
-add_executable(pi src/TheRestOfYourLife/pi.cpp)
-add_executable(estimate_halfway src/TheRestOfYourLife/estimate_halfway.cpp)
-add_executable(sphere_importance src/TheRestOfYourLife/sphere_importance.cpp)
-add_executable(sphere_plot src/TheRestOfYourLife/sphere_plot.cpp)
+add_executable(PathTracing ${EXTERNAL} ${SOURCE_PATH_TRACER})
+add_executable(cos_cubed src/PathTracer/cos_cubed.cpp)
+add_executable(cos_density src/PathTracer/cos_density.cpp)
+add_executable(integrate_x_sq src/PathTracer/integrate_x_sq.cpp)
+add_executable(pi src/PathTracer/pi.cpp)
+add_executable(estimate_halfway src/PathTracer/estimate_halfway.cpp)
+add_executable(sphere_importance src/PathTracer/sphere_importance.cpp)
+add_executable(sphere_plot src/PathTracer/sphere_plot.cpp)
